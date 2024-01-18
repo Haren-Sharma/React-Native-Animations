@@ -1,5 +1,6 @@
 import {View, Text, Pressable, Animated, Easing} from 'react-native';
 import React, {useEffect, useRef} from 'react';
+import { useTheme } from '../context/ThemeContextProvider';
 //1)need a value 
 //2)we will transform that value
 
@@ -11,6 +12,7 @@ import React, {useEffect, useRef} from 'react';
 const Basic = () => {
   const val = useRef(new Animated.Value(0)).current;
   const flag = useRef(0);
+  const {mode}=useTheme();
 
   const animate = bool => {
     if (bool) {
@@ -29,7 +31,7 @@ const Basic = () => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1,backgroundColor:mode==='dark'?'#676767':'white'}}>
       <Animated.View
         style={{
           flex: 5,
