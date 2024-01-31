@@ -9,7 +9,12 @@ import {View, Text, StyleSheet} from 'react-native';
 export default CustomDrawer = props => {
   const {mode, setMode} = useTheme();
   return (
-    <DrawerContentScrollView contentContainerStyle={{flex: 1}} {...props}>
+    <DrawerContentScrollView
+      contentContainerStyle={{
+        flex: 1,
+        backgroundColor: mode === 'dark' ? '#c0c0c0' : 'white',
+      }}
+      {...props}>
       <View style={{flex: 1}}>
         <DrawerItemList {...props} />
       </View>
@@ -19,9 +24,9 @@ export default CustomDrawer = props => {
           padding: 15,
           flexDirection: 'row',
           justifyContent: 'space-between',
-          alignItems:'center'
+          alignItems: 'center',
         }}>
-        <Text style={{color: 'black',fontSize:18}}>Dark Mode</Text>
+        <Text style={{color: 'black', fontSize: 18}}>Dark Mode</Text>
         <Switch
           open={mode === 'dark' ? true : false}
           setSwitch={bool => {
